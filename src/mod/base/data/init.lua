@@ -1,0 +1,5 @@
+require("mod.base.data.language")
+require("mod.base.data.keybind")
+require("mod.base.data.asset")
+require("mod.base.data.auto_turn_anim")
+require("mod.base.data.talk")

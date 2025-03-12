@@ -1,0 +1,47 @@
+name: Linux CI
+
+on:
+  push:
+    branches: [ develop, master ]
+  pull_request:
+    branches: [ develop, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Cache vanilla assets
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-vanilla-assets
+      with:
+        path: src/deps/elona
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('src/deps/elona/elona/version_en.txt') }}
+    - name: Set up LuaJIT
+      run: |
+        sudo apt-get -yqq install wget unzip luajit libluajit-5.1-dev libvips-dev
+    - name: Set up Luarocks
+      run: |
+        wget https://luarocks.org/releases/luarocks-3.3.1.tar.gz
+        tar zxpf luarocks-3.3.1.tar.gz
+        cd luarocks-3.3.1
+        ./configure --with-lua-include=/usr/include/luajit-2.1 --with-lua-lib=/usr/lib/x86_64-linux-gnu
+        make
+        sudo make install
+    - name: Install rocks
+      run: |
+        sudo luarocks install luasocket
+        sudo luarocks install luautf8
+        sudo luarocks install luafilesystem
+        sudo luarocks install lua-vips
+        sudo luarocks install lua-zlib
+    - name: Run REPL verify
+      run: |
+        set -e
+        ./OpenNefia verify -m
+    - name: Run REPL test
+      run: |
+        set -e
+        ./OpenNefia test

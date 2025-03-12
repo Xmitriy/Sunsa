@@ -1,0 +1,13 @@
+TAGS
+/src/repl_history.txt
+/src/graphic/*
+/src/mod/elona/sound/*
+/src/mod/beautify/graphic
+/src/deps
+/src/internal/global/__COMMIT__.lua
+/doc/out
+/src/data/font/MS-Gothic.ttf
+/editor/vscode/out
+/editor/vscode/node_modules
+/editor/vscode/.vscode-test/
+.DS_Store

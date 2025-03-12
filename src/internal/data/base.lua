@@ -1,0 +1,8 @@
+require("internal.data.schemas")
+require("internal.data.fallbacks")
+require("internal.data.events")
+require("internal.data.config_option_type")
+require("internal.data.config_menu")
+require("internal.data.config_option")
+require("internal.data.theme")
+require("internal.data.talk")
