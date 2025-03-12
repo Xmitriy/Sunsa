@@ -1,6 +1,4 @@
-# Note
-
-**Development has moved to https://github.com/OpenNefia/OpenNefia.git**. This repository is for an older prototype of OpenNefia that is no longer supported. The source code in this repository will be used as a reference for the final version of OpenNefia.
+OpenNefia.
 
 ---
 
